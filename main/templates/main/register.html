@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
     <title>Akash Drive</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
     <!-- Bootstrap core CSS -->
@@ -68,14 +66,15 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">    
     <main class="form-signin">
         <form method="POST" action="">
             {% csrf_token %}
-
-            <h1 class="h3 mb-3 fw-normal">Welcome to Akash Drive</h1>
+            <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(8.88158 0 0 8.88158 145 81.875)"><path d="m9.9 0 15.4 26.6 5.1-8.9-10.3-17.7z" fill="#ed3524"/><path d="m9.9 18.2 5.3 8.4h10.6l-5.3-8.4z" fill="#ae1e23"/><path d="m5.3 8.4-5.3 9.1 5.3 9.1 10.7-18.2z" fill="#ed3524"/></g></svg>
+            <h1 class="h1 mb-3 fw-normal"> Akash Drive </h1>
+            <h3 class="h3 mb-3 fw-normal">Create an account</h3>
+            <p> Already have an account? <a href="{% url 'login' %}">Login</a></p>
             {% if form.errors %}
             <div class="alert alert-danger" role="alert">
                 {% for field, errors in form.errors.items %}
