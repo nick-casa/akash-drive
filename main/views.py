@@ -1,3 +1,4 @@
+from main.models import Node
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -7,14 +8,32 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateUserForm
+from .forms import CreateUserForm, NodeForm
 
 
 # Create your views here.
 
 @login_required(login_url='login')
-def index(response):
-    return render(response, "main/index.html", {})
+def index(request):
+    form = NodeForm()
+
+    if request.method == 'POST':
+        form = NodeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('')
+
+    context = {'form':form}
+    return render(request, "main/index.html", context)
+
+@login_required(login_url='login')
+def trash(response):
+    return render(response, "main/trash.html", {})
+
+@login_required(login_url='login')
+def shared(response):
+    return render(response, "main/shared.html", {})
+
 
 def registerPage(request):
     form = CreateUserForm()
@@ -49,3 +68,5 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+    
