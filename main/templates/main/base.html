@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html style="overflow:auto; height:100vh;"> 
+    <head>
+        <style>
+            .fas,.far{
+                padding-left:10px;
+                padding-right:10px;
+            }
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Akash Drive</title>
+    </head>
+
+    <body style="overflow:auto; height:100vh; display:flex; flex-direction: row;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height:100%;" bis_skin_checked="1">
+            <div class="flex-row">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <svg style="width:80px;" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(8.88158 0 0 8.88158 145 81.875)"><path d="m9.9 0 15.4 26.6 5.1-8.9-10.3-17.7z" fill="#ed3524"/><path d="m9.9 18.2 5.3 8.4h10.6l-5.3-8.4z" fill="#ae1e23"/><path d="m5.3 8.4-5.3 9.1 5.3 9.1 10.7-18.2z" fill="#ed3524"/></g></svg>
+                    <span class="fs-4">Akash Drive</span>
+                </a>
+            </div>
+           
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              
+              <div class="dropdown" style="margin: 10px 20px;">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-plus"></i> New
+                </a>
+              
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#umodal">Upload</a></li>
+                  <li><a class="dropdown-item">Create Folder</a></li>
+                </ul>
+              </div>
+              
+              <li class="nav-item"><a href="/" class="nav-link link-dark"> <i class="far fa-folder"></i> My Drive </a></li>
+              <li class="nav-item"><a href="{% url 'shared' %}" class="nav-link link-dark"> <i class="fas fa-user-friends"></i>  Shared With Me </a></li>
+              <li class="nav-item"><a href="{% url 'trash' %}" class="nav-link link-dark"> <i class="far fa-trash-alt"></i> Trash  </a></li>
+            </ul>
+            <hr>
+            <div class="dropdown" bis_skin_checked="1">
+              <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i>
+                <strong>{{request.user}}</strong>
+              </a>
+              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+
+        <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" id='content' name='content'>
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <!-- Edit Profile Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+          <div class="modal-dialog .modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+                ...
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Upload Modal -->
+        <div class="modal fade" id="umodal" tabindex="-1" aria-labelledby="umodalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document" bis_skin_checked="1">
+            <div class="modal-content" bis_skin_checked="1">
+              <div class="modal-header" bis_skin_checked="1">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Upload File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" bis_skin_checked="1">
+                <table>
+                  {{form}}
+                </table>
+              </div>
+            </div>
+          </div>          
+        </div>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+    </body>
+</html>

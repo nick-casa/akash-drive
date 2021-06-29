@@ -1,0 +1,14 @@
+{
+    "word":"<i class='far fa-file-word'></i>",
+    "video":"<i class='far fa-file-video'></i>",
+    "powerpoint":"<i class='far fa-file-powerpoint'></i>",
+    "pdf":"<i class='far fa-file-pdf'></i>",
+    "image":"<i class='far fa-file-image'></i>",
+    "excel":"<i class='far fa-file-excel'></i>",
+    "archive":"<i class='far fa-file-archive'></i>",
+    "code":"<i class='far fa-file-code'></i>",
+    "audio":"<i class='far fa-file-audio'></i>",
+    "file":"<i class='far fa-file'></i>",
+    "text":"<i class='far fa-file-alt'></i>",
+    "csv":"<i class='fas fa-file-csv'></i>"
+}
